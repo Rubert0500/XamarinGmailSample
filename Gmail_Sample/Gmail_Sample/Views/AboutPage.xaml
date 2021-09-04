@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Gmail_Sample.Views.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Gmail_Sample.ViewModels"
+    x:Name="aboutPage"
+    Title="Primary">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="search" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <CollectionView
+            ItemsSource="{Binding Emails}"
+            SelectedItem="{Binding SelectedEmail}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    BackgroundColor="Red"
+                                    Command="{Binding Source={x:Reference aboutPage}, Path=BindingContext.DeleteCommand}"
+                                    CommandParameter="{Binding}"
+                                    Text="Delete" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Frame Padding="0" BorderColor="LightGray">
+                            <Grid
+                                Padding="10"
+                                ColumnDefinitions="Auto,Auto, Auto"
+                                RowDefinitions="Auto, Auto, Auto"
+                                RowSpacing="0">
+
+                                <Image
+                                    Grid.RowSpan="3"
+                                    Grid.Column="0"
+                                    Source="profileIcon" />
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    FontSize="Subtitle"
+                                    Text="{Binding From}"
+                                    TextColor="Black" />
+
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    FontSize="Caption"
+                                    Text="{Binding Subject}"
+                                    TextColor="Black" />
+
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="3"
+                                    FontSize="Body"
+                                    Text="{Binding ComposeEmail}" />
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Grid.ColumnSpan="3"
+                                    FontSize="Small"
+                                    HorizontalOptions="End"
+                                    Text="{Binding Date.DayOfWeek}"
+                                    TextColor="Black" />
+                                <Image Source="starIcon" Grid.Row="2" Grid.Column="4" HorizontalOptions="End"/>
+                            </Grid>
+                        </Frame>
+
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Margin="30"
+            BackgroundColor="#c71610"
+            Command="{Binding AddCommand}"
+            CornerRadius="40"
+            FontSize="Default"
+            HeightRequest="40"
+            HorizontalOptions="EndAndExpand"
+            ImageSource="composeIcon.png"
+            Text="Compose" />
+    </StackLayout>
+
+
+
+
+</ContentPage>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Gmail_Sample.Views.AddEmailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Compose">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="attachmentIcon" />
+        <ToolbarItem Command="{Binding AddEmailCommand}" IconImageSource="sendIcon" />
+        <ToolbarItem IconImageSource="moreIcon" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry
+                HeightRequest="50"
+                Placeholder="To: "
+                Text="{Binding To}"
+                WidthRequest="100" />
+            <Entry
+                HeightRequest="50"
+                Placeholder="From"
+                Text="{Binding From}"
+                WidthRequest="100" />
+            <Entry
+                HeightRequest="50"
+                Placeholder="Subject"
+                Text="{Binding Subject}"
+                WidthRequest="100" />
+            <Editor
+                AutoSize="TextChanges"
+                HeightRequest="1000"
+                Placeholder="Compose Email"
+                Text="{Binding ComposeEmail}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

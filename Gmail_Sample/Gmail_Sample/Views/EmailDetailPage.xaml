@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gmail_Sample.Views.EmailDetailPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="archiveIcon" />
+        <ToolbarItem IconImageSource="deleteIcon" />
+        <ToolbarItem IconImageSource="emailIcon" />
+        <ToolbarItem IconImageSource="moreIcon" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid
+            RowDefinitions="Auto, Auto, Auto"
+            ColumnDefinitions="Auto, Auto">
+
+            <Frame Grid.Row="0" Grid.ColumnSpan="3" BackgroundColor="Transparent" BorderColor="LightGray">
+                <Grid
+                    ColumnDefinitions="Auto, Auto, Auto">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="{Binding SelectedEmail.Subject}"
+                        FontSize="Medium"
+                        TextColor="Black"/>
+
+                    <Label
+                        Grid.Column="1"
+                        Text="Inbox"
+                        BackgroundColor="LightGray"
+                        Padding="5, 0"
+                        VerticalOptions="CenterAndExpand"
+                        />
+                    <Image Grid.Column="7"
+                           Source="starIcon"/>
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="Transparent" Padding="5" Margin="0, 0, 0, 20">
+                <Grid
+                    RowDefinitions="Auto, Auto, Auto"
+                    ColumnDefinitions="Auto, Auto, Auto, Auto"
+                    RowSpacing="1">
+                    <Image 
+                        Grid.Row="0" Grid.Column="0"
+                        Grid.RowSpan="3" Source="profileIcon" />
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="Caption"
+                        Text="{Binding SelectedEmail.From}"/>
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontSize="Caption"
+                        Text="{Binding SelectedEmail.To}"/>
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        FontSize="Caption"
+                        Text="{Binding SelectedEmail.Date.DayOfWeek}"/>
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Source="replyIcon"/>
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="5"
+                        Source="replyAllIcon"/>
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="6"
+                        Source="moreIcon"/>
+
+                </Grid>
+            </Frame>
+
+            <Label
+                Grid.Row="2"
+                Padding="10, 0"
+                Grid.ColumnSpan="3"
+                Text="{Binding SelectedEmail.ComposeEmail}"/>
+
+           
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
